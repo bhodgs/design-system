@@ -76,6 +76,26 @@
   --sl-color-purple-high: var(--secondary);
 }
 
+/*
+ * Expressive Code's blocks aren't Markdown elements, so the design system's components can't space them; they take a
+ * code block's spacing here: close under a heading or the paragraph that introduces them.
+ */
+.sl-markdown-content > .expressive-code {
+  margin-top: 1.25rem;
+}
+
+.sl-markdown-content > :is(h2, h3, h4) + .expressive-code {
+  margin-top: 0.75rem;
+}
+
+.sl-markdown-content > p + .expressive-code {
+  margin-top: 0.625rem;
+}
+
+.sl-markdown-content > .expressive-code:first-child {
+  margin-top: 0;
+}
+
 .site-title,
 .sidebar-content,
 starlight-toc {

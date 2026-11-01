@@ -11,9 +11,11 @@ export function docsTheme(): StarlightPlugin {
         config,
         updateConfig,
         addIntegration,
+        addRouteMiddleware,
         astroConfig,
         logger,
       }) {
+        addRouteMiddleware({ entrypoint: "@bhodgson/docs/route-middleware" });
         // Starlight's own MDX is optimised into plain HTML, which the design system's components can't replace.
         if (
           !astroConfig.integrations.some(({ name }) => name === "@astrojs/mdx")

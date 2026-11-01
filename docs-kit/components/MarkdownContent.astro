@@ -1,22 +1,8 @@
 ---
-// Renders the page's Markdown with the design system's components, rather than Starlight's own styles. Starlight's
-// class stays, so its own components, like asides and code frames, keep their spacing. Code blocks are Expressive
-// Code's, so they keep its frames rather than the design system's.
-import { markdown } from "@bhodgson/design-system";
-import AnchoredH2 from "./AnchoredH2.astro";
-import AnchoredH3 from "./AnchoredH3.astro";
-
-const { Content, entry } = Astro.locals.starlightRoute;
-const { pre: _, ...elements } = markdown;
+// The page's Markdown, which MarkdownBody renders with the design system's components. Starlight's class stays as a
+// hook for spacing Expressive Code's blocks, in the kit's styles.
 ---
 
 <div class="sl-markdown-content">
-  {Content ? (
-    <Content
-      frontmatter={entry.data}
-      components={{ ...elements, h2: AnchoredH2, h3: AnchoredH3 }}
-    />
-  ) : (
-    <slot />
-  )}
+  <slot />
 </div>

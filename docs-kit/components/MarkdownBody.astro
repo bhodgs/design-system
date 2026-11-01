@@ -1,0 +1,19 @@
+---
+// The page's Markdown, rendered with the design system's components in place of Starlight's own styles; the route
+// middleware puts this in place of Starlight's Content. Code blocks are Expressive Code's, so they keep its frames
+// rather than the design system's.
+import { markdown } from "@bhodgson/design-system";
+import { pageContent } from "@bhodgson/docs/page-content";
+import AnchoredH2 from "./AnchoredH2.astro";
+import AnchoredH3 from "./AnchoredH3.astro";
+
+const Content = pageContent.get(Astro.locals.starlightRoute);
+const { pre: _, ...elements } = markdown;
+---
+
+{Content && (
+  <Content
+    {...Astro.props}
+    components={{ ...elements, h2: AnchoredH2, h3: AnchoredH3 }}
+  />
+)}
