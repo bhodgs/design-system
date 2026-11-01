@@ -1,4 +1,5 @@
 import { fileURLToPath } from "node:url";
+import mdx from "@astrojs/mdx";
 import starlight from "@astrojs/starlight";
 import { docsTheme } from "@bhodgson/docs";
 import { apiSidebar } from "@bhodgson/docs/api";
@@ -35,6 +36,8 @@ export default defineConfig({
         },
       ],
     }),
+    // After Starlight, so its code blocks come first, and without Starlight's optimising, so pages take components.
+    mdx(),
   ],
   vite: {
     resolve: {

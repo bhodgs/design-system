@@ -124,6 +124,8 @@ const pairs: [string, string, number, string][] = [
   ["ink", "highlight-blue", 4.5, "highlighted text"],
   ["ink", "highlight-red", 4.5, "highlighted text"],
   ["secondary", "surface", 4.5, "secondary accent text"],
+  ["tertiary", "surface", 4.5, "subheadings"],
+  ["tertiary", "canvas", 4.5, "subheadings"],
   ["ink", "secondary-soft", 4.5, "text on the secondary tint"],
   ...statuses.flatMap((status): [string, string, number, string][] => [
     ["ink", `${status}-soft`, 4.5, `${status} message text`],

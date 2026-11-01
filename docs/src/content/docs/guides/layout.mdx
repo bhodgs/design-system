@@ -72,13 +72,17 @@ A window whose title bar is a shell prompt, with the command's output inside, fo
 
 ## Sheet
 
-`sheet` is a quieter window, for each section of a long page: an outline and a surface to read on, without a `Panel`'s title bar or shadow, so the page's header still leads. Inside `prose`, sheets are [spaced as sections](../text/#sections).
+`sheetClass` is a quieter window, for each section of a long page: an outline and a surface to read on, without a `Panel`'s title bar or shadow, so the page's header still leads. Space sheets from the outside, with the page's own classes:
 
 ```astro
-<section class="sheet">
-  <h2>The bug</h2>
-  <p>…</p>
-</section>
+---
+import { sheetClass } from "@bhodgson/design-system";
+---
+
+<div class="space-y-8">
+  <section class={sheetClass}>…</section>
+  <section class={sheetClass}>…</section>
+</div>
 ```
 
 ## Clearing
@@ -87,6 +91,8 @@ A window whose title bar is a shell prompt, with the command's output inside, fo
 
 ```astro
 <div class="max-w-2xl bg-clearing">
-  <article class="prose">…</article>
+  <article>
+    <Content components={markdown} />
+  </article>
 </div>
 ```
