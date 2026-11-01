@@ -33,6 +33,14 @@
       "types": "./dist/pagefind.d.ts",
       "default": "./dist/pagefind.js"
     },
+    "./page-content": {
+      "types": "./dist/page-content.d.ts",
+      "default": "./dist/page-content.js"
+    },
+    "./route-middleware": {
+      "types": "./dist/route-middleware.d.ts",
+      "default": "./dist/route-middleware.js"
+    },
     "./components/*": "./components/*",
     "./styles.css": "./styles.css",
     "./package.json": "./package.json"
