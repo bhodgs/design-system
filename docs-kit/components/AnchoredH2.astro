@@ -1,0 +1,13 @@
+---
+// A section heading with a link to itself, which shows on hover. Starlight's own heading links are off, as their
+// wrapper would sit between the headings and the design system's spacing.
+import { H2 } from "@bhodgson/design-system";
+import AnchorLink from "./AnchorLink.astro";
+
+const { id, ...props } = Astro.props;
+---
+
+<H2 id={id} class="group" {...props}>
+  <slot />
+  <AnchorLink id={id} />
+</H2>

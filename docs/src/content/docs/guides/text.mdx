@@ -46,7 +46,20 @@ Tailwind utilities for the type scale. They set the font, size, weight and spaci
 
 ## Long-form text
 
-`prose` styles rendered Markdown: headings, links, lists, quotes, tables and code. Wrap anything inside it that should keep its own styles in `not-prose`.
+`markdown` styles rendered Markdown with one component per element: headings, paragraphs, links, lists, quotes, tables and code. Each element carries its own classes, so nothing reaches in from outside. In Astro, give it to an MDX page's content:
+
+```astro
+---
+import { markdown } from "@bhodgson/design-system";
+const { Content } = await render(entry);
+---
+
+<Content components={markdown} />
+```
+
+Only MDX takes components, so write long-form pages as `.mdx`. The components are exported one by one too (`H2`, `P`, `Pre` and the rest), to swap one out or use one on its own.
+
+Spacing groups things, so a page can be skimmed. A new section (`h2`) sits well clear of the last, a heading sits close to what it heads, and a list, code block or callout sits close to the paragraph that introduces it. Bold is full weight, so the few phrases worth catching on a skim stand out. Subheadings (`h3`) are in the `tertiary` colour, so they don't read as links.
 
 Code blocks sit on the sunken surface. To highlight them with [Shiki](https://shiki.style) in both themes, give it a light and a dark theme and no default colour, and each token follows the page's theme:
 
@@ -60,4 +73,16 @@ export default defineConfig({
     },
   },
 });
+```
+
+## Callout
+
+`Callout` is for the one thing a reader should leave with: an accent bar on a soft accent background. In MDX, leave blank lines inside it for Markdown:
+
+```mdx
+<Callout>
+
+**Focus must happen during the tap**, while the browser is still handling it.
+
+</Callout>
 ```

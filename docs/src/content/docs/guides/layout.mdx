@@ -69,3 +69,30 @@ A window whose title bar is a shell prompt, with the command's output inside, fo
 ## Text halo
 
 `text-halo` gives text a halo in the canvas colour, so it stays readable over a drawing or the grid behind it.
+
+## Sheet
+
+`sheetClass` is a quieter window, for each section of a long page: an outline and a surface to read on, without a `Panel`'s title bar or shadow, so the page's header still leads. Space sheets from the outside, with the page's own classes:
+
+```astro
+---
+import { sheetClass } from "@bhodgson/design-system";
+---
+
+<div class="space-y-8">
+  <section class={sheetClass}>…</section>
+  <section class={sheetClass}>…</section>
+</div>
+```
+
+## Clearing
+
+`bg-clearing` puts a clear patch of canvas behind text, fading out into the grid on every side, so the grid's lines don't run through what's being read. Its edge is a shadow, so it reaches past the text without moving it or widening the page. Use it on a column of text that sits straight on the grid; `text-halo` is enough for a line or two.
+
+```astro
+<div class="max-w-2xl bg-clearing">
+  <article>
+    <Content components={markdown} />
+  </article>
+</div>
+```

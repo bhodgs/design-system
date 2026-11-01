@@ -55,4 +55,4 @@ pnpm dev        # The docs site, at http://localhost:4321/design-system/, showin
 pnpm test:run
 ```
 
-Before opening a pull request: `pnpm format && pnpm lint && pnpm typecheck && pnpm knip`, and `pnpm changeset` if the published package changed. Releasing: [docs/src/content/docs/contributing/releasing.md](docs/src/content/docs/contributing/releasing.md).
+Before opening a pull request: `pnpm format && pnpm lint && pnpm typecheck && pnpm knip`, and `pnpm changeset` if the published package changed. Releasing: [docs/src/content/docs/contributing/releasing.mdx](docs/src/content/docs/contributing/releasing.mdx).

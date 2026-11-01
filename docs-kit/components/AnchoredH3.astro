@@ -1,0 +1,12 @@
+---
+// A subheading with a link to itself, which shows on hover. See AnchoredH2.
+import { H3 } from "@bhodgson/design-system";
+import AnchorLink from "./AnchorLink.astro";
+
+const { id, ...props } = Astro.props;
+---
+
+<H3 id={id} class="group" {...props}>
+  <slot />
+  <AnchorLink id={id} />
+</H3>

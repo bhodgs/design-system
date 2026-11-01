@@ -19,7 +19,8 @@
     letter-spacing: inherit;
   }
 
-  .not-prose :is(ul, ol, dl, dd) {
+  /* Starlight's opt-out from its Markdown styles, for live examples and the kit's own parts. */
+  .not-content :is(ul, ol, dl, dd) {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -73,34 +74,6 @@
   --sl-color-purple-low: var(--secondary-soft);
   --sl-color-purple: var(--secondary);
   --sl-color-purple-high: var(--secondary);
-}
-
-/* Starlight wraps each heading with its anchor link; the wrapper takes the heading's spacing. */
-.prose > .sl-heading-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2.5rem;
-}
-
-.prose > .sl-heading-wrapper:first-child {
-  margin-top: 0;
-}
-
-.prose .sl-anchor-link {
-  display: inline-flex;
-  color: var(--muted);
-  opacity: 0;
-  transition: opacity 150ms;
-}
-
-.prose .sl-heading-wrapper:hover .sl-anchor-link,
-.prose .sl-anchor-link:focus-visible {
-  opacity: 1;
-}
-
-.prose .sl-anchor-link:hover {
-  color: var(--link);
 }
 
 .site-title,

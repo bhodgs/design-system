@@ -12,6 +12,7 @@ const rows: [string, string, number, string][] = [
   ["accent", "canvas", 3, "Primary button shape"],
   ["on-accent", "accent", 4.5, "Primary button text"],
   ["secondary", "surface", 4.5, "Secondary accent"],
+  ["tertiary", "surface", 4.5, "Subheadings"],
   ["info", "surface", 4.5, "Info text and icons"],
   ["success", "surface", 4.5, "Success text and icons"],
   ["warning", "surface", 4.5, "Warning text and icons"],

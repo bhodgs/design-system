@@ -1,0 +1,12 @@
+---
+// A heading's link to itself: muted, and shown when the heading is hovered or the link focused.
+const { id } = Astro.props;
+---
+
+<a
+  href={`#${id}`}
+  class="ml-2 font-normal text-muted no-underline opacity-0 transition-opacity group-hover:opacity-100 hover:text-link focus-visible:opacity-100"
+>
+  <span aria-hidden="true">#</span>
+  <span class="sr-only">Link to this section</span>
+</a>

@@ -29,6 +29,28 @@ export { Copyright, Footer } from "./Footer.tsx";
 export type { CopyrightProps, FooterProps } from "./Footer.tsx";
 export { cardClass, LinkCard } from "./LinkCard.tsx";
 export type { LinkCardProps } from "./LinkCard.tsx";
+export {
+  Blockquote,
+  Callout,
+  Code,
+  H2,
+  H3,
+  H4,
+  Hr,
+  Img,
+  Li,
+  markdown,
+  Ol,
+  P,
+  Pre,
+  sheetClass,
+  Strong,
+  Table,
+  Td,
+  Th,
+  Ul,
+} from "./markdown.tsx";
+export type { CalloutProps } from "./markdown.tsx";
 export { Menu } from "./Menu.tsx";
 export type { MenuProps } from "./Menu.tsx";
 export { Message } from "./Message.tsx";

@@ -7,7 +7,21 @@ export function docsTheme(): StarlightPlugin {
   return {
     name: "@bhodgson/docs",
     hooks: {
-      "config:setup"({ config, updateConfig, addIntegration }) {
+      "config:setup"({
+        config,
+        updateConfig,
+        addIntegration,
+        astroConfig,
+        logger,
+      }) {
+        // Starlight's own MDX is optimised into plain HTML, which the design system's components can't replace.
+        if (
+          !astroConfig.integrations.some(({ name }) => name === "@astrojs/mdx")
+        ) {
+          logger.warn(
+            "Add mdx() from @astrojs/mdx after starlight() in your integrations, so pages render with the design system's markdown components.",
+          );
+        }
         addIntegration(preact());
         addIntegration({
           name: "@bhodgson/docs/tailwind",
@@ -31,6 +45,8 @@ export function docsTheme(): StarlightPlugin {
             Search: "@bhodgson/docs/components/Search.astro",
             ...config.components,
           },
+          // Headings link to themselves through the design system's headings instead; see AnchoredH2.
+          markdown: { ...config.markdown, headingLinks: false },
           expressiveCode: {
             styleOverrides: {
               borderRadius: "0.5rem",
