@@ -201,6 +201,30 @@
     0 0 16px var(--canvas);
 }
 
+/*
+ * A clear patch of canvas behind text, fading out into the grid on every side, so the grid's lines don't run through
+ * what's being read. A shadow rather than padding, so it reaches past the text without moving or widening anything.
+ */
+@utility bg-clearing {
+  background-color: var(--canvas);
+  box-shadow: 0 0 2.5rem 1rem var(--canvas);
+}
+
+/*
+ * A quieter window, for each section of a long page: an outline and a surface to read on, without a `Panel`'s title
+ * bar or shadow, so a page's header still leads. Inside `prose`, sheets are spaced as sections.
+ */
+@utility sheet {
+  border: 1px solid var(--edge);
+  border-radius: 0.75rem;
+  background-color: color-mix(in oklch, var(--surface) 85%, transparent);
+  padding: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding: 1.5rem 1.75rem;
+  }
+}
+
 /* A bar that fills as the page scrolls, where browsers support scroll-driven animations. */
 @keyframes scroll-progress {
   to {
@@ -302,11 +326,41 @@
     font-size: var(--text-base);
   }
 
-  & > :where(h2, h3, h4) {
-    margin-top: 2.5rem;
+  /* Spacing groups things: a new section sits well clear of the last, a heading close to what it heads, and a list,
+     code block or callout close to the paragraph that introduces it. Sheets hold sections of their own. */
+  & > :where(.sheet) {
+    margin-top: 2rem;
   }
 
-  & > :where(:first-child) {
+  & > :where(.sheet) > :where(* + *) {
+    margin-top: 1.25rem;
+  }
+
+  & > :where(h2) {
+    margin-top: 3.5rem;
+  }
+
+  & > :where(h3, h4),
+  & > :where(.sheet) > :where(h3, h4) {
+    margin-top: 2.25rem;
+  }
+
+  & > :where(h2, h3, h4) + *,
+  & > :where(.sheet) > :where(h2, h3, h4) + * {
+    margin-top: 0.75rem;
+  }
+
+  & > :where(p) + :where(ul, ol, pre, aside),
+  & > :where(.sheet) > :where(p) + :where(ul, ol, pre, aside) {
+    margin-top: 0.625rem;
+  }
+
+  & > :where(.sheet) > :where(.type-eyebrow) + :where(h2) {
+    margin-top: 0.5rem;
+  }
+
+  & > :where(:first-child),
+  & > :where(.sheet) > :where(:first-child) {
     margin-top: 0;
   }
 
@@ -322,8 +376,21 @@
     text-decoration-color: var(--ink);
   }
 
+  /* Bold is what the eye catches on a skim, so it's full weight. */
   & :where(strong):not(:where(.not-prose *)) {
-    font-weight: 600;
+    font-weight: 700;
+  }
+
+  /* A callout, for the one thing a reader should leave with. */
+  & :where(aside):not(:where(.not-prose *)) {
+    border-left: 4px solid var(--accent);
+    border-radius: 0 0.5rem 0.5rem 0;
+    background-color: var(--accent-soft);
+    padding: 0.875rem 1.125rem;
+  }
+
+  & :where(aside > * + *):not(:where(.not-prose *)) {
+    margin-top: 0.5rem;
   }
 
   & :where(:not(pre) > code):not(:where(.not-prose *)) {

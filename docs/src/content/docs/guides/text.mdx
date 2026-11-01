@@ -61,3 +61,33 @@ export default defineConfig({
   },
 });
 ```
+
+### Spacing
+
+`prose` groups things by spacing, so a page can be skimmed. A new section (`h2`) sits well clear of the last, a heading sits close to what it heads, and a list, code block or callout sits close to the paragraph that introduces it.
+
+### Bold and callouts
+
+Bold is full weight, so the few phrases worth catching on a skim stand out. Italics are for how a sentence reads, not for skimming.
+
+An `aside` is a callout, for the one thing a reader should leave with. In MDX, leave blank lines inside it for Markdown:
+
+```mdx
+<aside>
+
+**Focus must happen during the tap**, while the browser is still handling it.
+
+</aside>
+```
+
+### Sections
+
+Wrap each section of a long page in a [sheet](../layout/#sheet), and `prose` spaces the sheets as sections, with the same spacing inside each one. Put a number or label above the heading with `type-eyebrow`, and it sits close to the heading:
+
+```astro
+<section class="sheet">
+  <p class="type-eyebrow text-muted">02</p>
+  <h2>The bug</h2>
+  <p>…</p>
+</section>
+```
