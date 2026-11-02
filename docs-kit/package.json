@@ -81,7 +81,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "tailwindcss": "^4.3.3",
     "typedoc": "^0.28.20",
-    "typescript": "~6.0.3"
+    "typescript": "~7.0.2"
   },
   "devDependencies": {
     "@astrojs/preact": "^6.1.0",
